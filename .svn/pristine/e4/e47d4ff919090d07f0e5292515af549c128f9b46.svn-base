@@ -1,0 +1,77 @@
+//
+//  FirstViewController.m
+//  FileFly
+//
+//  Created by jx on 16/4/25.
+//  Copyright © 2016年 jx. All rights reserved.
+//
+#import "SecondViewController.h"
+#import "FirstViewController.h"
+#import "ITRAirSideMenu.h"
+#import "AppDelegate.h"
+@interface FirstViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *table;
+
+@end
+
+@implementation FirstViewController
+//即将加载时出现
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"06"] forBarMetrics:UIBarMetricsCompact];
+    self.navigationController.navigationBar.barTintColor = [UIColor clearColor];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.layer.masksToBounds = YES;
+    
+}
+//方法滑动返回原来的
+- (IBAction)FaSong:(id)sender {
+    
+}
++(instancetype) controller
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ZhuYe" bundle:nil];
+    return [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([FirstViewController class])];
+
+}
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.table.contentOffset = CGPointMake(0, 64);
+    //背景图片
+//    UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_pl_long"]];
+//    
+//    imageView.frame = CGRectMake(0, 0, 320, 550);
+//    
+//    [self.view addSubview:imageView];    //标题
+    self.title = @"FileFly";
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"菜单" style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController)];
+    
+    self.table.backgroundColor = [UIColor clearColor];
+}
+//出现左侧的滑动栏
+- (void) presentLeftMenuViewController{
+    
+    //show left menu with animation
+    ITRAirSideMenu *itrSideMenu = ((AppDelegate *)[UIApplication sharedApplication].delegate).itrAirSideMenu;
+    [itrSideMenu presentLeftMenuViewController];
+    
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+#pragma mark - table
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+    -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+    {
+        return 3;
+    }
+
+    
+
+@end

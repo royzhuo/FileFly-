@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "893a2256-eb27-450c-9d93-cb031ac3f44a++3683",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "893a2256-eb27-450c-9d93-cb031ac3f44a++3683" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "893a2256-eb27-450c-9d93-cb031ac3f44a++3683" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3A160637-B144-4B96-A21D-B1EDA9AE3A2D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "893a2256-eb27-450c-9d93-cb031ac3f44a++3683" : "FileFly\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FileFly",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FileFly.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/www.svnchina.com\/svn\/kugou",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "893a2256-eb27-450c-9d93-cb031ac3f44a++3683"
+    }
+  ]
+}

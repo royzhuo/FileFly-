@@ -1,0 +1,17 @@
+//
+//  AppDelegate.h
+//  FileFly
+//
+//  Created by jx on 16/4/25.
+//  Copyright © 2016年 jx. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "ITRAirSideMenu.h"
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
+@property ITRAirSideMenu *itrAirSideMenu;
+
+@end
+

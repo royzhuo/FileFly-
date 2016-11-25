@@ -1,0 +1,290 @@
+//
+//  SecondViewController.m
+//  FileFly
+//
+//  Created by jx on 16/4/25.
+//  Copyright © 2016年 jx. All rights reserved.
+//
+#import "FirstViewController.h"
+#import "SecondViewController.h"
+#import "AppDelegate.h"
+#import "YHJTabPageScrollView.h"
+#import "Masonry.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "showImage.h"
+//  ALAssetsLibrary.h 代表资源库(所有的视频,照片)
+//    ALAssetsGroup.h   代表资源库中的相册
+//     ALAsset.h         代表相册中一个视频或者一张照片
+//     ALAssetRepresentation.h 代表一个资源的描述,可以获取到原始图片
+#define height      45.0
+static NSString *identifier = @"cell";
+@interface SecondViewController (){
+    UIView *View2;
+    ALAssetsLibrary *library;//照片数据库
+//    UIImage *_selectBtn;//是否选择按钮
+    BOOL isSelected;
+//    UICollectionView * CollectionView ;
+}
+//图片放大缩小
+@property(nonatomic,strong)UIImage *imageView;
+@property(nonatomic,weak) UIButton *selectedButton;
+@property(strong,nonatomic)YHJTabPageScrollView *pageControl;
+@property(strong,nonatomic)NSMutableArray *array;
+@property(strong,nonatomic)NSMutableArray *selectedRecipes;
+@property (nonatomic, strong) NSMutableIndexSet* selectedIndexSet;
+//@property(nonatomic,assign)BOOL isSelected;
+@end
+
+@implementation SecondViewController
+//控制器可以让左边侧滑找到当前class
++ (instancetype) controller{
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ChuanShu" bundle:nil];
+    return [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([SecondViewController class])];
+}
+
+#pragma view lifecycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    isSelected = NO;
+    //允许多选
+    self.CollectionView.allowsMultipleSelection = YES;
+    //顶部导航栏后退的按钮
+    UIBarButtonItem *BackBtn = [[UIBarButtonItem alloc]initWithTitle:nil style:UIBarButtonItemStyleDone target:self action:@selector(BackBtnAction:)];
+    //添加后退按钮图片
+    BackBtn.image = [UIImage imageNamed:@"houtui_icon"];
+    //将后退按钮图片赋值
+    self.navigationItem.leftBarButtonItem = BackBtn;
+    self.title = @"选择文件";
+    //隐藏状态栏
+    self.navigationController.navigationBar.translucent = YES;
+    //添加滑动视图
+    UIView *View1 = [UIView new];
+    View1.backgroundColor = [UIColor redColor];
+    View2 = [[UIView alloc] initWithFrame:self.view.bounds];
+    UIView *View3 = [UIView new];
+    View3.backgroundColor = [UIColor yellowColor];
+    UIView *View4 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height)];
+    View4.backgroundColor = [UIColor lightGrayColor];
+    [View2 addSubview:View4];
+
+
+    UIButton *btn1 =[[UIButton alloc]initWithFrame:CGRectMake(View4.frame.origin.x+200, View4.frame.origin.y+10,150, 25)];
+    [btn1 setTitle:@"完成" forState:UIControlStateNormal];
+    
+    [View4 addSubview:btn1];
+    //标题
+    UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(View4.frame.origin.x+10, View4.frame.origin.y+10,100, 25)];
+    
+    label1.text = [NSString stringWithFormat:@"相机胶卷(%ld)",self.array.count];
+    [View4 addSubview:label1];
+   //添加按钮
+//    UIButton *button1  = [[UIButton alloc]initWithFrame:CGRectMake(25, 300, 25, 20)];
+//    button1.titleLabel =
+    //给头部滑动条添加滑动view
+    NSArray *page = @[[[YHJTabPageScrollViewPageItem alloc]initWithTabName:@"文件" andTabView:View1],[[YHJTabPageScrollViewPageItem alloc]initWithTabName:@"图片" andTabView:View2],[[YHJTabPageScrollViewPageItem alloc]initWithTabName:@"音乐" andTabView:View3]];
+    //将滑动集合给滑动式图
+    _pageControl = [[YHJTabPageScrollView alloc]initWithPageItems:page];
+    //将自己的view添加滑动视图
+    UIView *rootView = self.view;
+    [rootView addSubview:_pageControl];
+    //添加约束（没有没法显示）
+    [_pageControl mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(rootView.mas_top).offset(60);
+        make.left.equalTo(rootView.mas_left);
+        make.right.equalTo(rootView.mas_right);
+        make.bottom.equalTo(rootView.mas_bottom);
+    }];
+    
+    
+    
+//    //获取document的路径
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *docPath = [paths lastObject];
+//    NSLog(@"%@",docPath);
+//    创建可变数组存储资源图片
+    //_array = [NSMutableArray array];
+    //创建资源库来访问相册资源
+    library = [[ALAssetsLibrary alloc]init];
+    //遍历资源库中所有相册，usingBlock会调用多少次
+    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        //如果存在group在遍历
+        if (group) {
+            //遍历相册中所有资源（照片视频）
+            [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop) {
+                if (result) {
+                    [self.array addObject:result];
+                    
+                    NSLog(@"%@",_array);
+                }
+            }];
+            label1.text = [NSString stringWithFormat:@"相机胶卷(%ld)",self.array.count];
+            [_CollectionView reloadData];
+        }
+        //刷新
+       // [_CollectionView reloadData];
+    } failureBlock:^(NSError *error) {
+        NSLog(@"访问失败");
+    }];
+    
+    //创建collectionview
+    UICollectionViewFlowLayout *FlowLayout = [[UICollectionViewFlowLayout alloc]init];
+    //新建collectionview并且设置属性与屏幕同宽
+    _CollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0,50, 320, 720) collectionViewLayout:FlowLayout];
+    _CollectionView.backgroundColor = [UIColor clearColor];
+    _CollectionView.dataSource = self;
+    _CollectionView.delegate = self;
+    //collectionview与tableview不同的注册单元格
+    [_CollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:identifier];
+    [View2 addSubview:_CollectionView];
+    //标题
+    
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+//#pragma mark - collectionview
+//设置分区
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+//设置元素大小框
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    UIEdgeInsets top = {10,25,40,20};
+    return top;
+}
+//设置分区上元素个数
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return _array.count;
+}
+//创建UICollectionviewcell
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+    // 新建图片视图
+    UIImageView *ImgView = [[UIImageView alloc] initWithFrame:cell.bounds];
+    UIImageView *imgView1 = [[UIImageView alloc]init];
+    ImgView.tag = 1000;
+    imgView1.tag = 3000;
+    //取出图片视图
+    ALAsset *result = _array[indexPath.row];
+    //获取到压缩图
+    CGImageRef cimg = [result thumbnail];
+    //转换为UIimage
+    UIImage *img = [UIImage imageWithCGImage:cimg];
+    //显示图片
+    ImgView.image = img;
+    //获取原图
+    CGImageRef ref = [[result  defaultRepresentation]fullScreenImage];
+    //转换为uiimage
+    UIImage *img1 = [UIImage imageWithCGImage:ref];
+    //获取原图
+    imgView1.image = img1;
+    
+    
+    UIButton *selectButton = [[UIButton alloc] init];
+    selectButton.tag = 2000;
+    [selectButton setImage:[UIImage imageNamed:@"def"] forState:UIControlStateNormal];
+    [selectButton setImage:[UIImage imageNamed:@"sel"] forState:UIControlStateSelected];
+    CGFloat width = cell.bounds.size.width;
+    selectButton.frame = CGRectMake(width - 20, 0, 20, 20);
+    [selectButton addTarget:self action:@selector(checkClick:) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(maxImage)];
+    [imgView1 addGestureRecognizer:tap];
+    [cell addSubview:ImgView];
+    [cell addSubview:imgView1];
+     [cell addSubview:selectButton];
+    return cell;
+}
+//设置collectionviewcell大小
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(80, 80);
+}
+#pragma mark - 局部放大
+-(void)maxImage
+{
+//        UICollectionViewCell *cell = [UICollectionView cellForItemAtIndexPath:indexPath];
+//    NSLog(@"局部放大");
+//    UIImageView *hh = [cell viewWithTag:1000];
+//    [showImage ShowImage:self.imageView];
+}
+
+//获取选中的图片数组
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+//    if (!isSelected) {
+//        //通过使用indexPath确定选定项目
+//        NSString *selectedRecipe = [_array[indexPath.section]objectAtIndex:indexPath.row];
+//        [_selectedRecipes addObject:selectedRecipe];
+//    }
+    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    NSLog(@"局部放大");
+    _imageView = [cell viewWithTag:3000];
+    [showImage ShowImage:_imageView];
+}
+#pragma mark - 点击选择
+
+//选中图片切换按钮
+-(void)checkClick:(UIButton*)button
+{
+
+        button.selected = !button.selected;//每次都改变按钮状态
+//        if ((!button.selected)) {
+//            button.hidden  = YES;
+//        }
+//        
+//    
+//
+//    else
+//    {
+//        [button setImage:[UIImage imageNamed:@"radio-button_on"] forState:UIControlStateNormal];
+//    }
+}
+//设置图片点击变高亮状态
+//-(void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+//    cell.contentView.backgroundColor = [UIColor redColor];
+//    UIImageView *hh = [cell viewWithTag:1000];
+//    hh.hidden = YES;
+//}
+////再次点击取消高亮
+//-(void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
+//    cell.contentView.backgroundColor = nil;
+//}
+#pragma mark -鼠标点击事件
+//点击后退的返回事件
+-(void)BackBtnAction:(UIButton *)navBackBtn{
+    
+//           [[self navigationController] popViewControllerAnimated:YES];
+    FirstViewController *vc = [[UIStoryboard storyboardWithName:@"ZhuYe" bundle:nil]instantiateViewControllerWithIdentifier:@"FirstViewController"];
+
+    [self.navigationController pushViewController:vc animated:YES];
+}
+#pragma mark - 全选全不选方法
+
+#pragma mark - 懒加载
+-(NSMutableArray *)array
+{
+    if (_array == nil) {
+        _array = [NSMutableArray array];
+    }
+    return _array;
+}
+-(NSMutableArray *)selectedRecipes
+{
+    if (_selectedRecipes ==nil) {
+        _selectedRecipes = [NSMutableArray array];
+    }
+    return _selectedRecipes;
+}
+@end

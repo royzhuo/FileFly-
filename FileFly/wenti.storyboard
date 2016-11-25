@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1808" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wenti-->
+        <scene sceneID="eDV-dC-UuM">
+            <objects>
+                <viewController storyboardIdentifier="wenti" id="lHr-ae-hKa" customClass="wenti" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="V12-PB-X6z"/>
+                        <viewControllerLayoutGuide type="bottom" id="qvT-2D-a6F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mDQ-pC-xEX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Now-D0-cIu">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="MxE-5G-jTB">
+                                        <rect key="frame" x="0.0" y="28" width="328" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MxE-5G-jTB" id="baB-RQ-97p">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIB-Fi-v3a">
+                                                    <rect key="frame" x="14" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" tag="2000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="后退箭头" translatesAutoresizingMaskIntoConstraints="NO" id="VJd-7e-aDd">
+                                                    <rect key="frame" x="296" y="15" width="18" height="13"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="Isc-X8-HDx"/>
+                                                        <constraint firstAttribute="width" constant="21" id="bGr-mF-Fz5"/>
+                                                        <constraint firstAttribute="height" constant="21" id="ghv-4s-jxt"/>
+                                                        <constraint firstAttribute="width" constant="18" id="vnD-Mx-OQ0"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Isc-X8-HDx"/>
+                                                            <exclude reference="bGr-mF-Fz5"/>
+                                                            <exclude reference="ghv-4s-jxt"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="VJd-7e-aDd" firstAttribute="bottom" secondItem="YIB-Fi-v3a" secondAttribute="bottom" constant="-4" id="26n-x6-GkZ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VJd-7e-aDd" secondAttribute="trailing" constant="9" id="6YK-0r-auO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="YIB-Fi-v3a" secondAttribute="bottom" constant="3" id="Kkj-cQ-lzv"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VJd-7e-aDd" secondAttribute="trailing" constant="6" id="Xau-5K-JPd"/>
+                                                <constraint firstItem="YIB-Fi-v3a" firstAttribute="top" secondItem="baB-RQ-97p" secondAttribute="topMargin" constant="3" id="gnu-vT-foC"/>
+                                                <constraint firstItem="VJd-7e-aDd" firstAttribute="centerY" secondItem="baB-RQ-97p" secondAttribute="centerY" id="hQU-n8-AJ2"/>
+                                                <constraint firstItem="VJd-7e-aDd" firstAttribute="top" secondItem="YIB-Fi-v3a" secondAttribute="top" constant="4" id="oMv-7l-eih"/>
+                                                <constraint firstItem="YIB-Fi-v3a" firstAttribute="leading" secondItem="baB-RQ-97p" secondAttribute="leadingMargin" constant="6" id="qDl-dW-UfL"/>
+                                                <constraint firstItem="VJd-7e-aDd" firstAttribute="top" secondItem="baB-RQ-97p" secondAttribute="topMargin" constant="-1" id="swH-R4-dbO"/>
+                                                <constraint firstItem="VJd-7e-aDd" firstAttribute="bottom" secondItem="baB-RQ-97p" secondAttribute="bottomMargin" id="w11-Jn-lBs"/>
+                                                <constraint firstItem="YIB-Fi-v3a" firstAttribute="centerY" secondItem="baB-RQ-97p" secondAttribute="centerY" id="wyX-19-wOz"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="6YK-0r-auO"/>
+                                                    <exclude reference="hQU-n8-AJ2"/>
+                                                    <exclude reference="swH-R4-dbO"/>
+                                                    <exclude reference="w11-Jn-lBs"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lHr-ae-hKa" id="FVB-TN-6l0"/>
+                                    <outlet property="delegate" destination="lHr-ae-hKa" id="MyH-I3-VM3"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Now-D0-cIu" firstAttribute="top" secondItem="mDQ-pC-xEX" secondAttribute="topMargin" id="GUw-JV-08o"/>
+                            <constraint firstItem="qvT-2D-a6F" firstAttribute="top" secondItem="Now-D0-cIu" secondAttribute="bottom" id="Y91-xX-rfi"/>
+                            <constraint firstItem="Now-D0-cIu" firstAttribute="leading" secondItem="mDQ-pC-xEX" secondAttribute="leadingMargin" constant="-20" id="cD3-EU-QEl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Now-D0-cIu" secondAttribute="trailing" constant="-20" id="iOw-35-ISB"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="table" destination="Now-D0-cIu" id="klq-6g-p5W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JeT-nT-pYA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18" y="112"/>
+        </scene>
+        <!--Wenti1-->
+        <scene sceneID="hXf-P2-KBd">
+            <objects>
+                <viewController storyboardIdentifier="wenti1" id="NnH-wz-Tq3" customClass="wenti1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cNR-GP-SHU"/>
+                        <viewControllerLayoutGuide type="bottom" id="egQ-XL-7nx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hvH-rI-hCw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 怎么选择头像？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7D-06-8z0">
+                                <rect key="frame" x="0.0" y="66" width="320" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="现在,FileFly快传提供了本地的图库和摄像头让你选择你喜欢的头像,你可以通过自由的切换,来增加你体验这个FileFly这款软件。" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3Y-bi-9el">
+                                <rect key="frame" x="0.0" y="89" width="320" height="479"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="S7D-06-8z0" firstAttribute="top" secondItem="cNR-GP-SHU" secondAttribute="bottom" constant="46" id="2qi-tC-poU"/>
+                            <constraint firstAttribute="trailing" secondItem="q3Y-bi-9el" secondAttribute="trailing" id="8ca-rb-3HP"/>
+                            <constraint firstItem="q3Y-bi-9el" firstAttribute="top" secondItem="S7D-06-8z0" secondAttribute="bottom" constant="1" id="IcV-4W-UP3"/>
+                            <constraint firstAttribute="trailing" secondItem="S7D-06-8z0" secondAttribute="trailing" id="SUH-Tv-BwG"/>
+                            <constraint firstItem="q3Y-bi-9el" firstAttribute="leading" secondItem="hvH-rI-hCw" secondAttribute="leading" id="bW1-fx-lDJ"/>
+                            <constraint firstItem="S7D-06-8z0" firstAttribute="top" secondItem="hvH-rI-hCw" secondAttribute="top" constant="66" id="dja-Ay-VFj"/>
+                            <constraint firstItem="q3Y-bi-9el" firstAttribute="top" secondItem="S7D-06-8z0" secondAttribute="bottom" constant="1" id="eh7-2M-e1J"/>
+                            <constraint firstItem="S7D-06-8z0" firstAttribute="leading" secondItem="hvH-rI-hCw" secondAttribute="leading" id="h2c-ee-8z7"/>
+                            <constraint firstItem="egQ-XL-7nx" firstAttribute="top" secondItem="q3Y-bi-9el" secondAttribute="bottom" id="pt7-EX-ttJ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2qi-tC-poU"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="wenti" destination="q3Y-bi-9el" id="Eeb-FS-W9B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="78u-PZ-g6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="375" y="112"/>
+        </scene>
+        <!--Wenti2-->
+        <scene sceneID="Zth-ko-KKn">
+            <objects>
+                <viewController storyboardIdentifier="wenti2" id="3tC-fy-OfH" customClass="wenti2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cr9-g0-dpl"/>
+                        <viewControllerLayoutGuide type="bottom" id="3zz-DC-E3W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oxU-wm-HBB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="怎么面对面传输？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aT-YR-mL6">
+                                <rect key="frame" x="0.0" y="68" width="320" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PoZ-lq-s1y">
+                                <rect key="frame" x="0.0" y="90" width="320" height="478"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">本app目前只限进行ios版本之间的相互连接，有两种方式：双方同时存在于
+1.双方WiFi和蓝牙都未打开：无法发现。
+2.双方都开启蓝牙：通过蓝牙发现和传输。
+3.双方都开启WiFi：通过WiFi Direct发现和传输，速度接近AirDrop（Reliable速率稍低），不知道同一WLAN下是否优先走局域网？
+双方都同时开启了WiFi和蓝牙：应该是模拟AirDrop，通过低功耗蓝牙技术扫描发现握手，然后通过WiFi Direct传输。</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1aT-YR-mL6" firstAttribute="top" secondItem="oxU-wm-HBB" secondAttribute="top" constant="68" id="0G7-yB-FmA"/>
+                            <constraint firstAttribute="trailing" secondItem="PoZ-lq-s1y" secondAttribute="trailing" id="2aB-Eb-mDU"/>
+                            <constraint firstItem="PoZ-lq-s1y" firstAttribute="leading" secondItem="oxU-wm-HBB" secondAttribute="leading" id="5Tn-q8-rme"/>
+                            <constraint firstItem="1aT-YR-mL6" firstAttribute="leading" secondItem="oxU-wm-HBB" secondAttribute="leading" id="Ogm-at-ul4"/>
+                            <constraint firstItem="3zz-DC-E3W" firstAttribute="top" secondItem="PoZ-lq-s1y" secondAttribute="bottom" id="RhS-Gy-Q6o"/>
+                            <constraint firstItem="PoZ-lq-s1y" firstAttribute="top" secondItem="1aT-YR-mL6" secondAttribute="bottom" constant="-1" id="TJv-23-zY7"/>
+                            <constraint firstItem="PoZ-lq-s1y" firstAttribute="top" secondItem="1aT-YR-mL6" secondAttribute="bottom" constant="-1" id="oJn-us-qct"/>
+                            <constraint firstAttribute="trailing" secondItem="1aT-YR-mL6" secondAttribute="trailing" id="rQD-yP-Whe"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="wenti" destination="PoZ-lq-s1y" id="HMP-Mb-wGv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SXp-An-pHn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="711" y="112"/>
+        </scene>
+        <!--Wenti3-->
+        <scene sceneID="BhE-ac-upF">
+            <objects>
+                <viewController storyboardIdentifier="wenti3" id="LFv-mL-TLR" customClass="wenti3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z31-2h-ajI"/>
+                        <viewControllerLayoutGuide type="bottom" id="B9f-jk-Gjg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f2H-gM-eGg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="怎么发送文件?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="krj-bG-HS1">
+                                <rect key="frame" x="0.0" y="66" width="320" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pRp-3z-L5K">
+                                <rect key="frame" x="0.0" y="89" width="320" height="479"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">在讨论建立连接之前，（需要连接的）设备们首先需要发现对方的存在。在应用中使用 Multipeer Connectivity，“发现”是第一个阶段。那么设备是如何发现彼此的呢？我们假设，现在有两个设备想要连接。那么至少要有一个设备作为浏览器(browser)，用来搜寻其他设备；第二个设备必须是可发现的，它要声明它在这里，并且它想要与别的设备连接。换句话说，第二个设备需要宣传自己。一般来说，两个设备都要宣传自己，但至少要有一个能浏览其他设备，从而建立连接。                                                       </mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pRp-3z-L5K" firstAttribute="leading" secondItem="f2H-gM-eGg" secondAttribute="leading" id="3ho-np-41m"/>
+                            <constraint firstItem="B9f-jk-Gjg" firstAttribute="top" secondItem="pRp-3z-L5K" secondAttribute="bottom" id="FXH-Iy-Q5n"/>
+                            <constraint firstAttribute="trailing" secondItem="pRp-3z-L5K" secondAttribute="trailing" id="KmM-sc-V4E"/>
+                            <constraint firstItem="krj-bG-HS1" firstAttribute="leading" secondItem="f2H-gM-eGg" secondAttribute="leading" id="WYo-u2-mGW"/>
+                            <constraint firstAttribute="trailing" secondItem="krj-bG-HS1" secondAttribute="trailing" id="aVY-sk-4ib"/>
+                            <constraint firstItem="krj-bG-HS1" firstAttribute="top" secondItem="f2H-gM-eGg" secondAttribute="top" constant="66" id="adS-AB-dOm"/>
+                            <constraint firstItem="pRp-3z-L5K" firstAttribute="top" secondItem="krj-bG-HS1" secondAttribute="bottom" id="bFL-qU-oMj"/>
+                            <constraint firstItem="pRp-3z-L5K" firstAttribute="top" secondItem="krj-bG-HS1" secondAttribute="bottom" id="mfS-OK-u8X"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="keI-eH-0Ia" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1055" y="112"/>
+        </scene>
+        <!--Wenti4-->
+        <scene sceneID="vUF-wC-bup">
+            <objects>
+                <viewController storyboardIdentifier="wenti4" id="8NP-uL-Wdg" customClass="wenti4" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zt2-YN-zXG"/>
+                        <viewControllerLayoutGuide type="bottom" id="u13-1R-aYi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="knB-b1-oIk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="怎么管理文件？" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwo-tZ-Tlc">
+                                <rect key="frame" x="0.0" y="66" width="320" height="23"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BeW-sE-l7q">
+                                <rect key="frame" x="0.0" y="89" width="320" height="479"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">iOS应用程序只能对自己创建的文件系统读取文件，这个独立、封闭、安全的空间，叫做沙盒。它一般存放着程序包文件（可执行文件）、图片、音频、视频、plist文件、sqlite数据库以及其他文件。
+
+每个应用程序都有自己的独立的存储空间（沙盒）
+
+在本filyflieapp中，你可以通过点击界面文件管理，选择编辑你要对文件管理进行的操作来具体操作你要操作的文件操作步骤。</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u13-1R-aYi" firstAttribute="top" secondItem="BeW-sE-l7q" secondAttribute="bottom" id="4iB-zi-YaO"/>
+                            <constraint firstAttribute="trailing" secondItem="rwo-tZ-Tlc" secondAttribute="trailing" id="AxK-vc-I7M"/>
+                            <constraint firstItem="rwo-tZ-Tlc" firstAttribute="leading" secondItem="knB-b1-oIk" secondAttribute="leading" id="G6P-2I-IDB"/>
+                            <constraint firstItem="BeW-sE-l7q" firstAttribute="leading" secondItem="knB-b1-oIk" secondAttribute="leading" id="Hzv-AE-MwL"/>
+                            <constraint firstAttribute="trailing" secondItem="BeW-sE-l7q" secondAttribute="trailing" id="Jm5-2Y-KeZ"/>
+                            <constraint firstItem="BeW-sE-l7q" firstAttribute="top" secondItem="rwo-tZ-Tlc" secondAttribute="bottom" id="c2E-8Y-v3x"/>
+                            <constraint firstItem="BeW-sE-l7q" firstAttribute="top" secondItem="rwo-tZ-Tlc" secondAttribute="bottom" id="fmM-ei-ZPj"/>
+                            <constraint firstItem="rwo-tZ-Tlc" firstAttribute="top" secondItem="knB-b1-oIk" secondAttribute="top" constant="66" id="yqt-lT-rFH"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CfN-ts-9DB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1392" y="112"/>
+        </scene>
+        <!--Wenti5-->
+        <scene sceneID="tjZ-vv-WRI">
+            <objects>
+                <viewController id="dnG-PS-Xmm" customClass="wenti5" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3XH-fm-i2f"/>
+                        <viewControllerLayoutGuide type="bottom" id="c7q-rW-Ay7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nkM-A5-pdr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zFx-Cu-hGI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1758" y="112"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="后退箭头" width="32" height="32"/>
+    </resources>
+</document>

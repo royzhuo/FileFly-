@@ -1,0 +1,95 @@
+//
+//  LeftMenuController.m
+//  FileFly
+//
+//  Created by jx on 16/4/25.
+//  Copyright © 2016年 jx. All rights reserved.
+//
+
+#import "LeftMenuController.h"
+#import "FirstViewController.h"
+#import "SecondViewController.h"
+#import "AppDelegate.h"
+@interface LeftMenuController ()
+ {
+        NSIndexPath *selectedIndexPath;
+    }
+
+
+@property (strong, nonatomic) IBOutlet UITableView *table;
+@end
+
+@implementation LeftMenuController
++ (instancetype)controller {
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"ZhuYe" bundle:nil];
+    return [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([LeftMenuController class])];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+#pragma mark - delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ITRAirSideMenu *itrSideMenu = ((AppDelegate *)[UIApplication sharedApplication].delegate).itrAirSideMenu;
+//    update content view controller with setContentViewController
+    [itrSideMenu hideMenuViewController];
+    selectedIndexPath = indexPath;
+}
+#pragma mark - tableview
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 54;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellString = @"Cell";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellString];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellString];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:21];
+        cell.textLabel.textColor = [UIColor whiteColor];
+        cell.textLabel.highlightedTextColor = [UIColor lightGrayColor];
+        cell.selectedBackgroundView = [[UIView alloc] init];
+    }
+    NSArray *titles = @[@"主页",@"快传",@"设置"];
+    cell.textLabel.text = titles[indexPath.row];
+    tableView.separatorStyle = NO;
+    return cell;
+}
+-(void)sideMenu:(ITRAirSideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController
+{
+    if (selectedIndexPath.row == 0) {
+        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[FirstViewController controller]]];
+    }
+    else if (selectedIndexPath.row ==1)
+    {
+        [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[SecondViewController controller]]];
+    }
+    else if (selectedIndexPath.row ==2)
+    {
+                [sideMenu setContentViewController:[[UINavigationController alloc] initWithRootViewController:[SecondViewController controller]]];
+    }
+}
+
+@end
